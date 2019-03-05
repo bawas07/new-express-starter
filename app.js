@@ -9,7 +9,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
-// const routes = require('./routes');
+const routes = require('./src/apps');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -32,12 +32,11 @@ app.use(express.urlencoded({ extended: true }));
 
 // Host the public folder
 // app.use('/', express.static(config.public));
-console.log(config.uploads);
 app.use('/uploads', express.static(config.uploads));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // API Version
-// app.use('/api/v1', routes.v1);
+app.use('/api/v1', routes);
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
