@@ -40,7 +40,8 @@ app.use(compress());
 const green = '\x1b[32m'; 
 const noCollor = '\x1b[0m'; 
 
-app.use(logger(`${green}:method${noCollor} :url :status :res[content-length] - :response-time ms`));
+// app.use(logger(`:date[web] ${green}:method${noCollor} :status :url :response-time ms`));
+app.use(logger(`:date[web] - ${green}info: :method :status :url :response-time ms${noCollor}`));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
