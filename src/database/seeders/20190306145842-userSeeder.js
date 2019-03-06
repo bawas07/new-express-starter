@@ -1,9 +1,9 @@
 'use strict';
 const faker = require('faker');
-
+const bcrypt = require('bcrypt');
 
 module.exports = {
-    up: (queryInterface, Sequelize) => {
+    up: async (queryInterface, Sequelize) => {
     /*
       Add altering commands here.
       Return a promise to correctly handle asynchronicity.
@@ -17,7 +17,7 @@ module.exports = {
         const seeds = [
             { email: 'email@email.com',
                 username: 'user',
-                password: '123123',
+                password: await bcrypt.hash('123123', bcrypt.genSaltSync(8)),
                 createdAt: new Date(),
                 updatedAt: new Date() }
         ];
@@ -25,7 +25,7 @@ module.exports = {
             const seed = {
                 email : faker.internet.email(),
                 username : faker.internet.userName(),
-                password : '123123',
+                password: await bcrypt.hash('123123', bcrypt.genSaltSync(8)),
                 createdAt: new Date(),
                 updatedAt: new Date()
             };
