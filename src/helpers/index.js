@@ -1,4 +1,5 @@
 const response = require('./response');
+const message = require('./message');
 // const jwtHelpers = require('./jwt');
 // const auth = require('./auth');
 // const notFound = require('./notFound');
@@ -13,6 +14,7 @@ const response = require('./response');
 
 module.exports = {
     response,
+    message
 //   jwtHelpers,
 //   auth,
 //   notFound,

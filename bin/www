@@ -3,6 +3,7 @@
 /**
  * Module dependencies.
  */
+require('module-alias/register')
 const config = require('config')
 const app = require('../app');
 const debug = require('debug')('new-express:server');

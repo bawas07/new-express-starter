@@ -26,7 +26,15 @@ app.use(cookieParser());
 app.use(cors());
 app.use(helmet());
 app.use(compress());
-app.use(logger('combined'));
+// app.use(logger('combined'));
+
+// const green = '\033[0;32m'; 
+// const noCollor = '\033[0m'; 
+
+const green = '\x1b[32m'; 
+const noCollor = '\x1b[0m'; 
+
+app.use(logger(`${green}:method${noCollor} :url :status :res[content-length] - :response-time ms`));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
