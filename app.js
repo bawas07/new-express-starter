@@ -47,13 +47,13 @@ app.use(express.urlencoded({ extended: true }));
 
 // Host the public folder
 // app.use('/', express.static(config.public));
-app.use('/uploads', express.static(config.uploads));
+app.use('/uploads', apiLimiter, express.static(config.uploads));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // API Version
 app.use('/api/v1', apiLimiter, routes);
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+// app.use('/', indexRouter);
+// app.use('/users', usersRouter);
 
 module.exports = app;
